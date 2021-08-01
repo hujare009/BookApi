@@ -20,7 +20,7 @@
             to get all books    ✅
             to get specific book  ✅
             to get a list of books based on catagory.  ✅
-            to get a list of books based on autor  ✅   [Taskk]..🔥
+            to get a list of books based on autor  [Taskk]..🔥...✅ 
 
         //POST -:
             NEW BOOK  ✅
@@ -30,8 +30,8 @@
             UPDATE/ADD NEW AUTHOR  ✅
 
         //DELETE-:
-            DELETE A BOOK
-            DELETE A AUTHOR FROM A BOOK.
+            DELETE A BOOK  ✅
+            DELETE A AUTHOR FROM A BOOK  ✅
 
 ----------------------------------------------------------------------------------------
     Author:-
@@ -45,10 +45,10 @@
             NEW AUTHOR  ✅
 
         //put 
-            UPDATE AUTHOR DETAILS  ✅   [taskk]..🔥                a huge task for me.                          
+            UPDATE AUTHOR DETAILS  [taskk]..🔥...✅          a huge task for me.                          
             
         //delete
-            DELETE an AUTHOR
+            DELETE an AUTHOR [taskk]..🔥...✅
 -----------------------------------------------------------------------------------------
     publication-:
         we need an api ✅
@@ -59,17 +59,17 @@
             to get a list of publicaton based on book. ✅
 
         //Post
-            ADD NEW PUBLICATION  ✅
+            ADD NEW PUBLICATION [taskk]..🔥...✅
 
         //put
-            UPDATE PUBLICATION DETAILS/add new book
-            UPDATE NEW BOOK TO A PUBLICATION
+            UPDATE PUBLICATION DETAILS/add new book  [taskk]..🔥...✅
+            UPDATE NEW BOOK TO A PUBLICATION  ✅
 
         //Delete
-            DELETE A BOOK FROM PUBLLICATION
-            DELETE A PUBLICATION
+            DELETE A BOOK FROM PUBLICATION  ✅
+            DELETE A PUBLICATION  [taskk]..🔥
 
-//  how the server serves the request.
+//  how does the server serves the request.
 
 
 

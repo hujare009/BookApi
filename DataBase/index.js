@@ -1,4 +1,4 @@
-const books = [
+let books = [
   {
     ISBN: "123456ONE",
     title: "Getting started with MERN ",
@@ -22,7 +22,7 @@ const books = [
   },
 ];
 //---------------------------------------------------------------------------------------------------------
-const authors = [
+let authors = [
   {
     id: 1,
     name: "shubham",
@@ -39,6 +39,11 @@ const publications = [
   {
     id: 1,
     name: "chakra",
+    books: "123456ONE",
+  },
+  {
+    id: 2,
+    name: "sam",
     books: [],
   },
 ];
