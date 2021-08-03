@@ -1,5 +1,8 @@
+require("dotenv").config();
 //framework
 const express = require("express");
+const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 //Database
 const Database = require("./DataBase/index");
@@ -9,6 +12,14 @@ const shapeAI = express();
 
 //configure
 shapeAI.use(express.json());
+
+//Establish Database connection
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("connection established!!!!!!")); //this will shows that ur connection is established ot not.
 
 /*   do this for all api's u'll remeber 
 
@@ -353,6 +364,7 @@ shapeAI.delete("/author/delete/:isbn/:id", (req, res) => {
   return res.json({ authors: Database.authors });
 });
 
+//delete a book from publication.
 /* 
 route        =   /publication/delete/book
 Description  =   delete a book from publication
@@ -376,11 +388,31 @@ shapeAI.delete("/publication/delete/book/:isbn/:pubId", (req, res) => {
 
   //update book database
   Database.books.forEach((book) => {
-    if(book.ISBN === req.params.isbn){
+    if (book.ISBN === req.params.isbn) {
       book.publication = 0; //no publication available
-      return res.json({book: Database.books, publications: Database.publications})
+      return res.json({
+        book: Database.books,
+        publications: Database.publications,
+      });
     }
   });
 });
 
-shapeAI.listen(3002, () => console.log("server is online!!🚀🔥"));
+/* 
+route        =   /publication/delete
+Description  =   delete a publication
+Access       =   PUBLIC
+Parameters   =   id
+Method       =   Delete 
+*/
+shapeAI.delete("/publications/delete/:isbn/:id", (req, res) => {
+  //deleting with for each is really hard so, we are using map here
+
+  const updatedpublicationDatabase = Database.publications.filter(
+    (publication) => publication.Id != req.param.id
+  );
+  Database.publications = updatedpublicationDatabase;
+  return res.json({ publications: Database.publications });
+});
+
+shapeAI.listen(3006, () => console.log("server is online!!🚀🔥"));

@@ -39,7 +39,7 @@ const publications = [
   {
     id: 1,
     name: "chakra",
-    books: "123456ONE",
+    books: ["123456ONE","123456two"],
   },
   {
     id: 2,
