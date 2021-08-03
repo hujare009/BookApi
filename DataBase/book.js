@@ -14,7 +14,7 @@ const BookSchema = mongoose.Schema({
 });
 
 //Create a Book Model = for that call mongoose & then call model methode & pass the schema as a parameter
-const BookModel = mongoose.model(BookSchema);
+const BookModel = mongoose.model("books",BookSchema);
 
 //to use this model evrywhere we are exporting it.
 module.exports = BookModel;

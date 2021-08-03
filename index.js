@@ -2,10 +2,15 @@ require("dotenv").config();
 //framework
 const express = require("express");
 const mongoose = require("mongoose");
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose"); don't assume this line as a part of code.
 
 //Database
 const Database = require("./DataBase/index");
+
+//Models
+const BookModel = require("./DataBase/book");
+const AuthorModels = require("./DataBase/author");
+const PublicationModel = require("./DataBase/publication");
 
 //initialize
 const shapeAI = express();
@@ -19,7 +24,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("connection established!!!!!!")); //this will shows that ur connection is established ot not.
+  .then(() => console.log("connection established!!!!")); //this will shows that ur connection is established ot not.
 
 /*   do this for all api's u'll remeber 
 
