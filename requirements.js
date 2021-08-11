@@ -30,7 +30,7 @@
             UPDATE/ADD NEW AUTHOR  ✅📌         with removing a bug
 
         //DELETE-:
-            DELETE A BOOK  ✅
+            DELETE A BOOK  ✅📌
             DELETE A AUTHOR FROM A BOOK  ✅
 
 ----------------------------------------------------------------------------------------

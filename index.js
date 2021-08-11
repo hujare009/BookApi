@@ -347,26 +347,40 @@ Access       =   PUBLIC
 Parameters   =   isbn
 Method       =   Delete 
 */
-shapeAI.delete("/book/delete/:isbn", (req, res) => {
+shapeAI.delete("/book/delete/:isbn", async (req, res) => {
   //deleting with for each is really hard so, we are using map here
 
-  const updatedBookDatabase = Database.books.filter(
-    (book) => book.ISBN != req.param.isbn
-  );
+  const updatedBookDatabase = await BookModel.findOneAndDelete({
+    ISBN: req.params.isbn,
+  });
 
-  Database.books = updatedBookDatabase; //for update it we need book database is in let not in const.
+  /* const updatedBookDatabase = Database.books.filter(
+    (book) => book.ISBN !== req.params.isbn
+  );*/
   return res.json({ books: Database.books });
 });
 //update the book database..
 /* 
 route        =   book/delete/author
-Description  =  DELETE A AUTHOR FROM A BOOK
+Description  =   DELETE A AUTHOR FROM A BOOK
 Access       =   PUBLIC
 Parameters   =   isbn
 Method       =   Delete 
 */
-shapeAI.delete("/book/delete/author/:isbn/:authorId", (req, res) => {
-  Database.books.forEach((book) => {
+shapeAI.delete("/book/delete/author/:isbn/:authorId", async (req, res) => {
+  const updatedBook = await BookModel.findOneAndUpdate(
+    {
+      ISBN: req.params.isbn,
+    },
+    {
+      $pull: {
+        authors: parseInt(req.params.authorId),
+      },
+    },
+    { new: true }
+  );
+
+  /*Database.books.forEach((book) => {
     if (book.ISBN === req.params.isbn) {
       const newAuthorList = book.authors.filter(
         (author) => author !== parseInt(req.params.authorId)
@@ -374,10 +388,10 @@ shapeAI.delete("/book/delete/author/:isbn/:authorId", (req, res) => {
       book.author = newAuthorList;
       return;
     }
-  });
+  });*/
 
   //update the author database
-  Database.authors.forEach((author) => {
+  /* Database.authors.forEach((author) => {
     if (author.id === parseInt(req.params.authorId)) {
       const newBooksList = author.books.filter(
         (book) => book !== req.params.isbn
@@ -386,12 +400,24 @@ shapeAI.delete("/book/delete/author/:isbn/:authorId", (req, res) => {
       author.books = newBooksList;
       return;
     }
-  });
+  });*/
+
+  const updatedAuthor = await AuthorModel.findOneAndUpdate(
+    {
+      id: parseInt(req.params.authorId),
+    },
+    {
+      $pull: {
+        books: req.params.isbn,
+      },
+    },
+    { new: true }
+  );
 
   return res.json({
     message: "author was deleted!!!",
-    book: Database.books,
-    author: Database.authors,
+    book: updatedBook,
+    author: updatedAuthor,
   });
 });
 
