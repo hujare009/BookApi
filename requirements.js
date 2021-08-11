@@ -17,16 +17,16 @@
     We need an api :
 
         //Get
-            to get all books    ✅
-            to get specific book  ✅
-            to get a list of books based on catagory.  ✅
-            to get a list of books based on autor  [Taskk]..🔥...✅ 
+            to get all books    ✅...(succeessfully added database)...✅ 📌
+            to get specific book  ✅ 📌
+            to get a list of books based on catagory.  ✅ 📌
+            to get a list of books based on author  [Taskk]🔥...✅ 📌 
 
         //POST -:
-            NEW BOOK  ✅
+            NEW BOOK  ✅📌
 
         //PUT-:                                                                                                   
-            UPDATE BOOK DETAILS  ✅
+            UPDATE BOOK DETAILS  ✅📌
             UPDATE/ADD NEW AUTHOR  ✅
 
         //DELETE-:
@@ -38,11 +38,12 @@
         we need an api
     
         //Get
-            to get all authors ✅
+            to get all authors ✅📌
             to get specific author  ✅
             to get a list of authors based on a book..✅
+
         //Post
-            NEW AUTHOR  ✅
+            NEW AUTHOR  ✅📌
 
         //put 
             UPDATE AUTHOR DETAILS  [taskk]..🔥...✅          a huge task for me.                          

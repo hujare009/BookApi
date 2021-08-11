@@ -26,12 +26,12 @@ let authors = [
   {
     id: 1,
     name: "shubham",
-    books: ["1234ONE", "123456two"],
+    books: ["123456ONE", "123456two"],
   },
   {
     id: 2,
     name: "abhay",
-    books: ["1234ONE"],
+    books: ["123456ONE"],
   },
 ];
 //--------------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ const publications = [
   {
     id: 1,
     name: "chakra",
-    books: ["123456ONE","123456two"],
+    books: ["123456ONE", "123456two"],
   },
   {
     id: 2,
