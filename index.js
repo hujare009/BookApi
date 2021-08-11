@@ -215,7 +215,8 @@ shapeAI.put("/book/update/:isbn", async (req, res) => {
   //map => new array =>replace
   //foreach =>directly modifies the array...this is known as tradeoff
 
-  const updatedBook = await BookModel.findOneAndUpdate(       //this will update data entity
+  const updatedBook = await BookModel.findOneAndUpdate(
+    //this will update data entity
     {
       ISBN: req.params.isbn,
     },
@@ -242,30 +243,55 @@ route        =   /book/author/update/:isbn
 Description  =   update/add new author
 Access       =   PUBLIC
 Parameters   =   isbn
-Method       =   put 
+Method       =   put
 */
-//update author details -:
-shapeAI.put("/book/author/update/:isbn", (req, res) => {
-  // here we have to update database
-  Database.books.forEach((book) => {
+//add & update author details -:
+shapeAI.put("/book/author/update/:isbn", async (req, res) => {
+  // here we have to updating the book database.
+
+  const updatedBook = await BookModel.findOneAndUpdate(
+    {
+      ISBN: req.params.isbn,
+    },
+    {
+      $addToSet: { authors: req.body.newAuthor },
+    },
+    { new: true }
+  );
+
+  /* Database.books.forEach((book) => {
     if (book.ISBN === req.params.isbn)
       return book.authors.push(req.body.newAuthor);
   });
+*/
+  //update the author database.
 
-  //update the author database
+  const updatedAuthor = await AuthorModel.findOneAndUpdate(
+    {
+      id: req.body.newAuthor,
+    },
+    {
+      $addToSet: { books: req.params.isbn },
+    },
+    {
+      new: true,
+    }
+  );
+
+  /*
   Database.authors.forEach((author) => {
     if (author.id === req.body.newAuthor)
       return author.books.push(req.params.isbn);
   });
-
+*/
   return res.json({
-    books: Database.books,
-    authors: Database.authors,
+    books: updatedBook,
+    authors: updatedAuthor,
     message: "New author was added...",
   });
 });
 
-//update data of author..put req.
+//update data of author.
 /* 
 route        =   author/update/:title
 Description  =   update name of author

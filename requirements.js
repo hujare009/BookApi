@@ -27,7 +27,7 @@
 
         //PUT-:                                                                                                   
             UPDATE BOOK DETAILS  ✅📌
-            UPDATE/ADD NEW AUTHOR  ✅
+            UPDATE/ADD NEW AUTHOR  ✅📌         with removing a bug
 
         //DELETE-:
             DELETE A BOOK  ✅
